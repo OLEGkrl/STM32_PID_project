@@ -10,9 +10,6 @@ typedef struct{
 		float Kp;
 		float Ki;
 		float Kd;
-		float Kp_;
-		float Ki_;
-		float Kd_;
 		float dt;
 		float set;
 		float cur;
@@ -23,9 +20,7 @@ typedef struct{
 		int cur_arr;
 		int flagKi;
 		int mode;
-		//PID();
-		//PID(float, float, float);
-		//PID(float, float, float,float);
+
 
 } PID ;
 void PID_setVal(PID *,float);
