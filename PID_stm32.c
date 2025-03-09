@@ -109,17 +109,20 @@ void PID_update(PID * PID_t) {
 	case 3:
 			if(fabsf(PID_t->err) < PID_t->deltaT){
 					PID_t->flagKi =1;
+
 			}
+
 			if( (fabsf(PID_t->err) > PID_t->deltaT) && PID_t->flagKi ==1){
 					PID_t->flagKi =0;
 			}
+
 			if(PID_t->flagKi ==1 ){
 					PID_t ->I += (PID_t ->Ki) * PID_t ->err;
 			}else{
-				PID_t ->I += (PID_t ->Ki /2) * PID_t ->err;
+				PID_t ->I += (PID_t ->Ki /4) * PID_t ->err;
 			}
 
-		if( PID_t->err > PID_t ->deltaT +1){
+			if( PID_t->err > PID_t ->deltaT +1){
 				PID_t->out = PID_t -> cur_arr+1;
 			}else{
 				PID_t ->out = (int)((PID_t ->Kp) * PID_t ->P +  PID_t ->I + PID_t ->Kd * PID_t ->D);
